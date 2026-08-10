@@ -1,0 +1,150 @@
+/* HomePage 樣式：首頁短版 About 區塊與技能標籤 */
+.home-page {
+  min-height: 100vh;
+}
+
+.home-about {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 96px 70px;
+
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(300px, 1fr);
+  gap: 48px;
+
+  position: relative;
+
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.home-about__heading p {
+  margin: 0 0 14px;
+
+  color: var(--color-text-light);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.home-about__heading h2 {
+  margin: 0;
+
+  font-size: clamp(2.4rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.home-about__heading span {
+  display: block;
+  color: var(--color-secondary);
+}
+
+.home-about__content {
+  padding: 34px;
+
+  border: 2px solid var(--color-text);
+  background-color: var(--color-surface);
+  box-shadow: 12px 12px 0 var(--color-primary);
+}
+
+.home-about__label {
+  width: fit-content;
+  margin: 0 0 22px;
+  padding: 8px 12px;
+
+  color: var(--color-primary-text);
+  background-color: var(--color-primary);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.home-about__description {
+  margin: 0 0 16px;
+
+  color: var(--color-text-light);
+
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.home-about__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 12px;
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.home-about__link span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+
+  place-items: center;
+
+  color: #111817;
+  background-color: #ffd86f;
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+}
+
+.home-about__skills {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-about__skill {
+  padding: 10px 14px;
+
+  border: 2px solid var(--color-text);
+
+  color: #111817;
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.home-about__skill--1 {
+  background-color: var(--color-primary);
+}
+
+.home-about__skill--2 {
+  background-color: #ffd86f;
+}
+
+.home-about__skill--3 {
+  color: #ffffff;
+  background-color: #f43678;
+}
+
+.home-about__skill--4 {
+  color: #ffffff;
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 850px) {
+  .home-about {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    padding: 72px 20px;
+  }
+
+  .home-about__content {
+    padding: 26px;
+    box-shadow: 8px 8px 0 var(--color-primary);
+  }
+}

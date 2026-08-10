@@ -1,0 +1,245 @@
+/* Navbar 樣式：影片風格的白色工具列與亮藍 active 資料夾 tab */
+/* Nudge 風格的設計工具列 */
+.navbar {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  height: 48px;
+
+  margin: 20px auto 0;
+
+  display: flex;
+  align-items: stretch;
+
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+
+  color: #070707;
+  background-color: #ffffff;
+
+  border-radius: 18px 18px 0 0;
+
+  box-shadow: 0 10px 28px rgba(23, 32, 31, 0.08);
+}
+
+/* 左側 Logo 區域 */
+.navbar__logo {
+  width: 62px;
+
+  display: grid;
+  place-items: center;
+}
+
+.navbar__logo-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.navbar__logo svg {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar__logo:hover svg {
+  color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.navbar__theme svg {
+  pointer-events: none;
+}
+
+.navbar__contact {
+  gap: 8px;
+}
+
+.navbar__contact svg {
+  flex-shrink: 0;
+}
+
+.navbar__contact:hover svg {
+  fill: currentColor;
+}
+
+/* 中間導覽連結 */
+.navbar__links {
+  display: flex;
+  align-items: stretch;
+
+  flex: 1;
+}
+
+.navbar__link {
+  position: relative;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.navbar__link svg {
+  flex-shrink: 0;
+}
+
+/* 滑鼠移到選單上 */
+.navbar__link:hover {
+  background-color: var(--color-surface-soft);
+}
+
+/* 目前所在頁面的選單 */
+.navbar__link--active {
+  z-index: 2;
+
+  color: #070707;
+  background-color: #18bdf4;
+}
+
+.navbar__link--active::before {
+  width: 18px;
+  height: 14px;
+
+  position: absolute;
+  top: 0;
+  left: 12px;
+
+  border-radius: 0 0 5px 5px;
+
+  background-color: #18bdf4;
+
+  content: '';
+  transform: translateY(-9px);
+}
+
+/*
+ * active 同時也可能符合 hover，
+ * 所以另外指定，避免 Hover 蓋掉主題色。
+ */
+.navbar__link--active:hover {
+  background-color: #18bdf4;
+}
+
+/* 右側功能區 */
+.navbar__actions {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 14px;
+}
+
+/* 圓形語言與主題按鈕 */
+.navbar__circle {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: #070707;
+  background-color: #f2f3f2;
+
+  border: 0;
+  border-radius: 50%;
+
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.navbar__theme {
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar__theme:hover {
+  color: #070707;
+  background-color: #18bdf4;
+
+  transform: rotate(12deg);
+}
+
+/* Contact 外框按鈕 */
+.navbar__contact {
+  height: 32px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+
+  border: 2px solid var(--color-text);
+
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.navbar__contact:hover {
+  color: #ffffff;
+  background-color: #070707;
+}
+
+/* ---------- 手機版 ---------- */
+
+@media (max-width: 850px) {
+  .navbar {
+    width: calc(100% - 24px);
+    margin-top: 12px;
+  }
+
+  .navbar__link {
+    padding: 0 12px;
+  }
+
+  /* 平板先隱藏選單文字，只留下圖示 */
+  .navbar__link {
+    font-size: 0;
+  }
+
+  .navbar__link svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .navbar__circle:first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar__logo {
+    width: 48px;
+  }
+
+  .navbar__link {
+    padding: 0 10px;
+  }
+
+  .navbar__actions {
+    padding: 0 7px;
+  }
+
+  .navbar__contact {
+    display: none;
+  }
+}

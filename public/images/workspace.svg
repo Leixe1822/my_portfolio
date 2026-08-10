@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Workspace illustration</title>
+  <desc id="desc">A graphic illustration showing a simple desk and code window.</desc>
+  <rect width="400" height="400" fill="#7557ff" />
+  <rect x="70" y="88" width="260" height="178" rx="10" fill="#f5f7fa" stroke="#111817" stroke-width="10" />
+  <rect x="70" y="88" width="260" height="42" rx="10" fill="#ffd86f" stroke="#111817" stroke-width="10" />
+  <path d="M118 166h74M118 202h134M118 238h92" stroke="#111817" stroke-width="14" stroke-linecap="round" />
+  <path d="M154 318h92M200 266v52" stroke="#111817" stroke-width="16" stroke-linecap="round" />
+</svg>

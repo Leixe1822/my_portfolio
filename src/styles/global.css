@@ -1,0 +1,79 @@
+/* 全站基礎樣式：載入變數、設定背景格線、字體與共用 reset */
+/* variables.css 必須先載入，後面才能使用 var(--color-...) */
+@import './variables.css';
+
+/* 讓 padding 與 border 包含在元素設定的寬高裡 */
+* {
+  box-sizing: border-box;
+}
+
+/* 點擊導覽列錨點時使用平滑捲動 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 全站共用的背景、文字及字體 */
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  color: var(--color-text);
+  background-color: var(--color-background);
+
+  /* 橫線 */
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    /* 直線 */ linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+
+  /* 每一格的寬度與高度 */
+  background-size: 96px 96px;
+
+  /* 捲動畫面時讓網格固定在後方 */
+  background-attachment: fixed;
+
+  font-family: Arial, 'Noto Sans TC', sans-serif;
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 切換路由時的水平滑入效果，呼應影片中頁面像畫布被推進來 */
+.page-slide {
+  animation: page-slide-in 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes page-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(64px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 移除連結預設的底線與藍色 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 圖片不超出父層寬度，並移除行內元素底部空隙 */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* 表單元件沿用網站字體 */
+button,
+input,
+textarea {
+  font: inherit;
+}

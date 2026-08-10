@@ -1,0 +1,77 @@
+/* Experience 樣式：經歷區塊標題、列表卡片與手機版排列 */
+.experience-section {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 96px 70px;
+
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.experience-section__header {
+  max-width: 780px;
+  margin-bottom: 42px;
+}
+
+.experience-section__header p,
+.experience-section__item span {
+  color: var(--color-text-light);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.experience-section__header p {
+  margin: 0 0 12px;
+}
+
+.experience-section__header h2 {
+  margin: 0;
+
+  font-size: clamp(2rem, 4.5vw, 4.3rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.experience-section__list {
+  display: grid;
+  gap: 16px;
+}
+
+.experience-section__item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+
+  padding: 26px;
+
+  border: 2px solid var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.experience-section__item h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.experience-section__item p {
+  max-width: 720px;
+  margin: 0;
+
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+@media (max-width: 800px) {
+  .experience-section {
+    width: calc(100% - 24px);
+    padding: 72px 20px;
+  }
+
+  .experience-section__item {
+    grid-template-columns: 1fr;
+  }
+}

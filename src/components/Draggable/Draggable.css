@@ -1,0 +1,36 @@
+/* Draggable 樣式：拖曳游標、位移 transform 與拖曳中狀態 */
+.draggable {
+  width: fit-content;
+
+  position: relative;
+
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+
+  pointer-events: auto;
+
+  /*
+   * 拖曳時不能對 transform 設定 transition，
+   * 否則移動會延遲、看起來像無法拖曳。
+   */
+  transition: filter 0.2s ease;
+
+  will-change: transform;
+}
+
+.draggable__content {
+  transform: translate3d(var(--drag-x, 0), var(--drag-y, 0), 0);
+}
+
+.draggable:hover {
+  filter: brightness(1.05);
+}
+
+.draggable--active {
+  z-index: 50;
+  cursor: grabbing;
+
+  filter: drop-shadow(0 14px 16px var(--shadow-color));
+}

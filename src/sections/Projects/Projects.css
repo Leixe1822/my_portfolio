@@ -1,0 +1,47 @@
+/* Projects 樣式：作品列表區塊的外框、標題與卡片間距 */
+.projects-section {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 72px 70px 96px;
+
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  scroll-margin-top: 100px;
+}
+
+.projects-section__header {
+  max-width: 820px;
+  margin-bottom: 48px;
+}
+
+.projects-section__header p {
+  margin: 0 0 12px;
+
+  color: var(--color-text-light);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.projects-section__header h2 {
+  margin: 0;
+
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.projects-section__grid {
+  display: grid;
+  gap: 28px;
+}
+
+@media (max-width: 800px) {
+  .projects-section {
+    width: calc(100% - 24px);
+    padding: 72px 20px;
+  }
+}

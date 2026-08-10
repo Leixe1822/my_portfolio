@@ -1,0 +1,36 @@
+/* Footer 樣式：作品集底部品牌列與響應式排列 */
+.footer {
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  margin: 0 auto 24px;
+  padding: 20px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 18px 18px;
+
+  color: var(--color-text-light);
+  background-color: var(--color-surface);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.footer span:first-child {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 650px) {
+  .footer {
+    width: calc(100% - 24px);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

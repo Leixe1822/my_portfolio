@@ -1,0 +1,99 @@
+/* ProjectCard 樣式：作品卡片的預覽區、內容區與標籤排列 */
+.project-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) 1fr;
+  overflow: hidden;
+
+  border: 2px solid var(--color-text);
+
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.project-card__preview {
+  min-height: 230px;
+
+  display: grid;
+  place-items: center;
+
+  border-right: 2px solid var(--color-text);
+
+  color: #111817;
+  background-color: var(--color-primary);
+
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+}
+
+.project-card--yellow .project-card__preview {
+  background-color: #ffd86f;
+}
+
+.project-card--purple .project-card__preview {
+  color: #ffffff;
+  background-color: var(--color-secondary);
+}
+
+.project-card__content {
+  padding: 28px;
+}
+
+.project-card__meta {
+  margin: 0 0 14px;
+
+  color: var(--color-text-light);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  margin: 0 0 16px;
+
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin: 28px 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.project-card__tags li {
+  padding: 7px 10px;
+
+  border: 1px solid var(--color-border);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__preview {
+    min-height: 150px;
+    border-right: 0;
+    border-bottom: 2px solid var(--color-text);
+  }
+}

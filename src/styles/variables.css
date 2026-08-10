@@ -1,0 +1,61 @@
+/* 全站設計變數：集中管理主題顏色、格線、間距與圓角 */
+/*
+ * 共用設計變數：兩個主題都會使用。
+ * 修改這裡可以統一調整內容寬度、頁面留白與圓角。
+ */
+:root {
+  --page-width: 1200px;
+  --page-padding: 24px;
+
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-large: 32px;
+}
+
+/* 薄荷科技感：App 將 data-theme="mint" 設定在 <html> 上 */
+[data-theme='mint'] {
+  --color-background: #f3f5f1;
+  --grid-line: rgba(23, 32, 31, 0.1);
+  --color-surface: #ffffff;
+  --color-surface-soft: #e8eeea;
+
+  --color-text: #17201f;
+  --color-text-light: #62706d;
+
+  --color-primary: #43d6b5;
+  --color-secondary: #705cf6;
+  --color-border: #cbd4d0;
+
+  --color-primary-text: #071f19;
+  --shadow-color: rgba(23, 32, 31, 0.12);
+
+  --background: var(--color-background);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-light);
+  --accent: var(--color-primary);
+  --border-color: var(--color-border);
+}
+
+/* 深藍螢光綠：App 將 data-theme="neon" 設定在 <html> 上 */
+[data-theme='neon'] {
+  --color-background: #0c111d;
+  --grid-line: rgba(184, 243, 90, 0.1);
+  --color-surface: #151c2b;
+  --color-surface-soft: #20283a;
+
+  --color-text: #f5f7fa;
+  --color-text-light: #9ca8ba;
+
+  --color-primary: #b8f35a;
+  --color-secondary: #5b8cff;
+  --color-border: #293142;
+
+  --color-primary-text: #10180a;
+  --shadow-color: rgba(0, 0, 0, 0.35);
+
+  --background: var(--color-background);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-light);
+  --accent: var(--color-primary);
+  --border-color: var(--color-border);
+}

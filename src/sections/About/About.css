@@ -1,0 +1,497 @@
+/* About 樣式：自我介紹畫布、拍立得、技能色塊與響應式位置 */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap');
+
+/* ========================================
+   About 區塊
+======================================== */
+
+.about-section {
+  position: relative;
+  width: calc(100% - 48px);
+  max-width: 1500px;
+  min-height: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 150px 32px 90px;
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+
+  color: var(--text-primary, #111817);
+  background-color: transparent;
+
+  scroll-margin-top: 100px;
+}
+
+.about-section,
+.about-section *,
+.about-section *::before,
+.about-section *::after {
+  box-sizing: border-box;
+  box-shadow: none;
+  text-shadow: none;
+  filter: none;
+}
+
+/* ========================================
+   上方弧形分隔線
+======================================== */
+
+.about-section__curve {
+  position: absolute;
+  top: -260px;
+  left: 50%;
+
+  width: 120%;
+  height: 420px;
+
+  border-bottom: 2px solid var(--border-color, #ccd8d4);
+  border-radius: 0 0 50% 50%;
+
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ========================================
+   About 內容容器
+======================================== */
+
+.about-section__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(1250px, 100%);
+  min-height: 680px;
+  margin: 0 auto;
+}
+
+/* about me 手寫字 */
+.about-section__handwriting {
+  position: absolute;
+  top: 15px;
+  left: 8%;
+
+  margin: 0;
+
+  color: var(--text-primary, #111817);
+
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.8rem;
+
+  transform: rotate(8deg);
+}
+
+/* ========================================
+   中間自我介紹
+======================================== */
+
+.about-section__content {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: min(790px, 72%);
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+/* what's up 選取框 */
+.about-section__title-box {
+  position: relative;
+  display: inline-block;
+
+  margin-bottom: 38px;
+  padding: 7px 14px;
+
+  border: 2px solid var(--text-primary, #111817);
+  background-color: transparent;
+}
+
+.about-section__title-box p {
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* 選取框四個角 */
+.about-section__handle {
+  position: absolute;
+
+  display: block;
+  width: 9px;
+  height: 9px;
+
+  border: 2px solid var(--text-primary, #111817);
+  background-color: var(--background, #f4f7f3);
+}
+
+.about-section__handle--top-left {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.about-section__handle--top-right {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.about-section__handle--bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+.about-section__handle--bottom-right {
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
+}
+
+/* 自我介紹標題 */
+.about-section__introduction {
+  max-width: 800px;
+  margin: 0;
+
+  color: var(--text-primary, #111817);
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(2.1rem, 3.8vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+}
+
+.about-section__introduction strong {
+  font-weight: 800;
+}
+
+/* 高雄文字色塊 */
+.about-section__highlight {
+  display: inline-block;
+  padding: 0 8px;
+
+  color: #111817;
+  background-color: var(--accent, #45d6b5);
+
+  transform: rotate(-2deg);
+}
+
+/* 中文介紹 */
+.about-section__description {
+  max-width: 650px;
+  margin: 26px auto 0;
+
+  color: var(--text-secondary, #65736f);
+
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+/* ========================================
+   技能色塊
+======================================== */
+
+.about-section__skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+
+  max-width: 760px;
+  margin-top: 38px;
+}
+
+.about-section__skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 45px;
+  padding: 8px 13px;
+
+  border: 2px solid var(--text-primary, #111817);
+
+  color: #111817;
+
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.about-section__skill--yellow {
+  background-color: #f8bd31;
+}
+
+.about-section__skill--mint {
+  background-color: #45d6b5;
+}
+
+.about-section__skill--pink {
+  color: #ffffff;
+  background-color: #f43678;
+}
+
+.about-section__skill--blue {
+  background-color: #44c7ef;
+}
+
+.about-section__skill--purple {
+  color: #ffffff;
+  background-color: #7557ff;
+}
+
+.about-section__skill--green {
+  background-color: #73d65c;
+}
+
+.about-section__skill--orange {
+  background-color: #ff8c42;
+}
+
+.about-section__skill--cyan {
+  background-color: #77e0e8;
+}
+
+/* ========================================
+   可拖曳拍立得
+======================================== */
+
+.about-section__photo-drag {
+  position: absolute;
+  z-index: 8;
+  touch-action: none;
+}
+
+.about-section__photo-drag--left {
+  top: 310px;
+  left: 0;
+}
+
+.about-section__photo-drag--right {
+  top: 310px;
+  right: 0;
+}
+
+.about-section__polaroid {
+  width: 165px;
+  margin: 0;
+  padding: 9px 9px 13px;
+
+  border: 2px solid var(--border-color, #ccd8d4);
+
+  color: #111817;
+  background-color: #ffffff;
+
+  cursor: grab;
+}
+
+.about-section__polaroid:active {
+  cursor: grabbing;
+}
+
+.about-section__polaroid--left {
+  transform: rotate(10deg);
+}
+
+.about-section__polaroid--right {
+  transform: rotate(-9deg);
+}
+
+.about-section__photo {
+  position: relative;
+  display: grid;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  place-items: center;
+  overflow: hidden;
+
+  color: #111817;
+  background-color: var(--accent, #45d6b5);
+
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+.about-section__photo--workspace {
+  color: #ffffff;
+  background-color: #7557ff;
+}
+
+.about-section__photo img {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.about-section__polaroid figcaption {
+  margin-top: 9px;
+
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* ========================================
+   下方狀態文字
+======================================== */
+
+.about-section__status {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--text-secondary, #65736f);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.about-section__status-dot {
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid var(--text-primary, #111817);
+  border-radius: 50%;
+
+  background-color: var(--accent, #45d6b5);
+}
+
+/* ========================================
+   平板
+======================================== */
+
+@media (max-width: 1000px) {
+  .about-section {
+    width: calc(100% - 24px);
+  }
+
+  .about-section {
+    padding-top: 130px;
+  }
+
+  .about-section__container {
+    min-height: 760px;
+  }
+
+  .about-section__content {
+    width: min(720px, 84%);
+  }
+
+  .about-section__photo-drag--left {
+    top: 530px;
+    left: 2%;
+  }
+
+  .about-section__photo-drag--right {
+    top: 530px;
+    right: 2%;
+  }
+
+  .about-section__polaroid {
+    width: 135px;
+  }
+}
+
+/* ========================================
+   手機
+======================================== */
+
+@media (max-width: 700px) {
+  .about-section {
+    min-height: 1050px;
+    padding: 110px 18px 70px;
+  }
+
+  .about-section__curve {
+    top: -300px;
+    width: 170%;
+  }
+
+  .about-section__container {
+    display: block;
+    min-height: 850px;
+  }
+
+  .about-section__handwriting {
+    top: 0;
+    left: 5%;
+    font-size: 1.5rem;
+  }
+
+  .about-section__content {
+    width: 100%;
+    padding-top: 70px;
+  }
+
+  .about-section__title-box {
+    margin-bottom: 28px;
+  }
+
+  .about-section__title-box p {
+    font-size: 1.25rem;
+  }
+
+  .about-section__introduction {
+    font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+  }
+
+  .about-section__description {
+    font-size: 0.9rem;
+  }
+
+  .about-section__skills {
+    margin-top: 30px;
+  }
+
+  .about-section__skill {
+    min-height: 40px;
+    padding: 7px 9px;
+    font-size: 0.75rem;
+  }
+
+  .about-section__photo-drag--left {
+    top: 720px;
+    left: 3%;
+  }
+
+  .about-section__photo-drag--right {
+    top: 750px;
+    right: 3%;
+  }
+
+  .about-section__polaroid {
+    width: 120px;
+  }
+
+  .about-section__status {
+    bottom: -40px;
+    font-size: 0.56rem;
+  }
+}
