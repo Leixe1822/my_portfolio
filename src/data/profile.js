@@ -2,9 +2,9 @@
 const profile = {
   name: 'Lexie',
   logoText: 'LEXIE.',
-  location: '高雄 / 台中 / 可遠端',
+  location: 'Kaohsiung, TW',
   language: 'TW',
-  role: '前端開發 / 跨領域轉職',
+  role: 'Frontend Developer',
   year: '2026',
   email: 'hello@lexie.dev',
   githubUrl: 'https://github.com/weiting',

@@ -1,6 +1,4 @@
 /* HomePage 頁面：首頁內容，包含 Hero、簡短介紹與聯絡區 */
-import { Link } from 'react-router-dom'
-
 import Hero from '../../sections/Hero/Hero'
 import Contact from '../../sections/Contact/Contact'
 
@@ -46,10 +44,10 @@ function HomePage() {
             打造兼具美感與實用性的數位產品。
           </p>
 
-          <Link className="home-about__link" to="/about">
-            MORE ABOUT ME
+          <a className="home-about__link" href="#contact">
+            查看聯絡方式
             <span>↗</span>
-          </Link>
+          </a>
         </div>
 
         {/* 使用 map 產生技能標籤 */}
