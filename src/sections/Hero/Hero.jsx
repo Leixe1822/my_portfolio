@@ -40,29 +40,27 @@ function Hero() {
 
         <time className="hero__time">{currentTime}</time>
 
-        <span className="hero__timebar-location">
-          {profile.location.toUpperCase().replace(', ', ' / ')}
-        </span>
+        <span className="hero__timebar-location">目前專注 React 前端開發</span>
       </div>
 
       <div className="hero__canvas">
-        <p className="hero__document-name">PORTFOLIO / {profile.year}</p>
+        <p className="hero__document-name">前端作品集 / {profile.year}</p>
 
         {/* 姓名互動區：便利貼與姓名都可以拖曳 */}
         <div className="hero__identity">
           {/* 左邊可拖曳便利貼 */}
           <Draggable className="hero__drag hero__drag--current">
             <div className="hero__note hero__note--current">
-              Currently learning React
+              目前專注 React 前端開發
             </div>
           </Draggable>
 
-          <p className="hero__handwriting">my name is</p>
+          <p className="hero__handwriting">嗨，我是</p>
 
           {/* 右邊可拖曳便利貼 */}
           <Draggable className="hero__drag hero__drag--previous">
             <div className="hero__note hero__note--previous">
-              Previously in banking
+              行銷企劃 × 銀行貸款業務
             </div>
           </Draggable>
 
@@ -82,30 +80,30 @@ function Hero() {
           {/* 求職狀態 */}
           <div className="hero__available">
             <span className="hero__available-dot" />
-            <span>AVAILABLE FOR FRONTEND OPPORTUNITIES</span>
+            <span>正在尋找初階前端工程師機會</span>
           </div>
         </div>
 
         {/* 下方介紹：角色、簡介與聯絡按鈕 */}
         <div className="hero__bottom">
-          <span className="hero__tag hero__tag--role">
-            {profile.role.toUpperCase()}
-          </span>
+          <span className="hero__tag hero__tag--role">{profile.role}</span>
 
           <div className="hero__intro">
             <h2>
-              I build thoughtful
+              結合視覺敏感度與商業思維，
               <br />
-              digital experiences.
+              打造清楚好用的網頁體驗。
             </h2>
 
             <p>
-              從銀行業務跨足前端開發，喜歡將複雜資訊整理成清楚、
-              好用而且具有質感的網頁體驗。
+              畢業於國立臺灣藝術大學，曾任行銷企劃與銀行貸款業務。
+              過往經歷讓我具備內容企劃、需求理解、溝通協調與目標導向的執行能力。
+              現在專注於 React 前端開發，希望將視覺、使用者需求與技術整合，
+              打造兼具美感與實用性的數位產品。
             </p>
 
             <a className="hero__contact" href="#contact">
-              <span>CONTACT ME</span>
+              <span>查看聯絡方式</span>
 
               <span className="hero__contact-icon" aria-hidden="true">
                 <ArrowUpRight size={16} strokeWidth={2.5} />
@@ -114,7 +112,7 @@ function Hero() {
           </div>
 
           <span className="hero__tag hero__tag--location">
-            {profile.location.toUpperCase()}
+            {profile.location}
           </span>
         </div>
       </div>

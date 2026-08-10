@@ -37,13 +37,13 @@ function HomePage() {
           <p className="home-about__label">WHAT&apos;S UP!</p>
 
           <p className="home-about__description">
-            嗨，我是 Lexie。過去曾在銀行擔任業務， 現在正在轉職成為前端工程師。
+            嗨，我是 Lexie。畢業於國立臺灣藝術大學，曾任行銷企劃與銀行貸款業務。
           </p>
 
           <p className="home-about__description">
-            銀行工作讓我學會理解需求、清楚溝通以及處理問題。
-            現在我把這些能力帶進前端開發，
-            將複雜的資訊整理成清楚且容易操作的網頁體驗。
+            過往經歷讓我具備內容企劃、需求理解、溝通協調與目標導向的執行能力。
+            現在專注於 React 前端開發，希望將視覺、使用者需求與技術整合，
+            打造兼具美感與實用性的數位產品。
           </p>
 
           <Link className="home-about__link" to="/about">
