@@ -4,6 +4,7 @@ import { FolderOpen } from 'lucide-react'
 
 import homePreview from '../../assets/images/home-preview.png'
 import loanPlatformPreview from '../../assets/images/loan-platform-preview.png'
+import profileMobilePreview from '../../assets/images/profile-mobile-preview.png'
 import taishinMobilePreview from '../../assets/images/taishin-mobile-preview.png'
 import './SlidingFolder.css'
 
@@ -29,6 +30,8 @@ const folderItems = [
     imageAlt: '個人作品集首頁深色模式截圖',
     previewUrl: 'portfolio.home.preview',
     mobilePlaceholder: true,
+    mobileImage: profileMobilePreview,
+    mobileImageAlt: '個人作品集手機版首頁截圖',
   },
   {
     id: 'lab',
@@ -98,10 +101,10 @@ function SlidingFolder() {
                       <span />
                     </div>
                     <div className="sliding-folder__phone-screen">
-                      <div className="sliding-folder__phone-placeholder">
-                        <p>RWD / MOBILE</p>
-                        <span>下一張手機截圖</span>
-                      </div>
+                      <img
+                        src={profileMobilePreview}
+                        alt="個人作品集手機版首頁截圖"
+                      />
                     </div>
                   </div>
                   <div
@@ -134,10 +137,17 @@ function SlidingFolder() {
                           <span />
                         </div>
                         <div className="sliding-folder__phone-screen">
-                          <div className="sliding-folder__phone-placeholder">
-                            <p>RWD / MOBILE</p>
-                            <span>下一張手機截圖</span>
-                          </div>
+                          {item.mobileImage ? (
+                            <img
+                              src={item.mobileImage}
+                              alt={item.mobileImageAlt}
+                            />
+                          ) : (
+                            <div className="sliding-folder__phone-placeholder">
+                              <p>RWD / MOBILE</p>
+                              <span>下一張手機截圖</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
