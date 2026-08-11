@@ -6,10 +6,12 @@
 }
 
 .work-page__hero {
+  position: relative;
+
   width: calc(100% - 48px);
   max-width: 1500px;
   margin: 0 auto;
-  padding: 70px 70px 24px;
+  padding: 70px 70px 34px;
 
   border-right: 1px solid var(--color-border);
   border-left: 1px solid var(--color-border);
@@ -35,9 +37,67 @@
   letter-spacing: -0.07em;
 }
 
+/* 作品頁小裝飾：只做輕量視覺平衡 */
+.work-page__mini-mark {
+  position: absolute;
+  right: 70px;
+  bottom: 58px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+
+  border: 2px solid var(--color-text);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+
+  color: var(--color-text-light);
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.work-page__mini-mark::before,
+.work-page__mini-mark::after {
+  position: absolute;
+  right: 18px;
+
+  width: 76px;
+  height: 2px;
+
+  background-color: var(--color-text-light);
+
+  content: '';
+}
+
+.work-page__mini-mark::before {
+  top: -18px;
+}
+
+.work-page__mini-mark::after {
+  bottom: -18px;
+}
+
+.work-page__mini-mark span {
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
 @media (max-width: 850px) {
   .work-page__hero {
     width: calc(100% - 24px);
-    padding: 70px 20px 20px;
+    padding: 70px 20px 24px;
+  }
+
+  .work-page__mini-mark {
+    display: none;
   }
 }
