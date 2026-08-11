@@ -19,6 +19,10 @@
   border-left: 1px solid var(--color-border);
 }
 
+.home-about__heading {
+  padding-top: 24px;
+}
+
 .home-about__role-badge {
   display: inline-block;
   width: fit-content;
@@ -182,18 +186,23 @@
 }
 
 .home-about__code-line:nth-child(5) {
-  --chars: 31;
+  --chars: 50;
   --delay: 3400ms;
 }
 
 .home-about__code-line:nth-child(6) {
-  --chars: 27;
+  --chars: 40;
   --delay: 4250ms;
 }
 
 .home-about__code-line:nth-child(7) {
-  --chars: 2;
+  --chars: 23;
   --delay: 5100ms;
+}
+
+.home-about__code-line:nth-child(8) {
+  --chars: 2;
+  --delay: 5950ms;
 }
 
 .home-about__code-keyword {

@@ -105,6 +105,167 @@
   animation: hero-fade-up 520ms 120ms ease both;
 }
 
+/* 首頁軌道裝飾，像設計工具裡的定位參考線 */
+.hero__orbit {
+  position: absolute;
+  top: 156px;
+  left: 50%;
+  z-index: 4;
+
+  width: min(900px, 82%);
+  height: 290px;
+
+  border: 2px dashed rgba(101, 115, 111, 0.38);
+  border-radius: 50%;
+
+  pointer-events: none;
+  transform: translateX(-50%) rotate(-4deg);
+  animation: hero-orbit-in 760ms 220ms ease both;
+}
+
+.hero__coordinate,
+.hero__stamp,
+.hero__blueprint {
+  position: absolute;
+  z-index: 5;
+
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__coordinate {
+  color: var(--text-secondary, #65736f);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: hero-fade-up 540ms 360ms ease both;
+}
+
+.hero__coordinate::before,
+.hero__coordinate::after {
+  position: absolute;
+  left: 0;
+
+  width: 52px;
+  height: 2px;
+
+  background-color: currentColor;
+
+  content: '';
+}
+
+.hero__coordinate::before {
+  top: -12px;
+}
+
+.hero__coordinate::after {
+  bottom: -12px;
+}
+
+.hero__coordinate--left {
+  top: 214px;
+  left: 7%;
+}
+
+.hero__coordinate--right {
+  right: 8%;
+  bottom: 104px;
+}
+
+.hero__stamp {
+  top: 90px;
+  right: 15%;
+
+  padding: 10px 18px;
+
+  border: 2px solid var(--text-primary, #111817);
+  border-radius: 999px;
+  background-color: var(--color-secondary);
+
+  color: #ffffff;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(7deg);
+  animation: hero-stamp-in 680ms 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero__blueprint {
+  bottom: 78px;
+  left: 7%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 42px);
+  gap: 8px;
+  padding: 16px;
+
+  border: 2px solid var(--color-text-light);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--hero-blueprint-grid, rgba(101, 115, 111, 0.16)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      var(--hero-blueprint-grid, rgba(101, 115, 111, 0.16)) 1px,
+      transparent 1px
+    ),
+    var(--hero-blueprint-bg, rgba(244, 247, 243, 0.58));
+  background-size: 18px 18px;
+
+  color: var(--color-text-light);
+  transform: rotate(-3deg);
+  animation: hero-fade-up 540ms 480ms ease both;
+}
+
+.hero__blueprint-label {
+  grid-column: 1 / -1;
+
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__blueprint-row {
+  display: block;
+  height: 28px;
+
+  border: 2px solid currentColor;
+  border-radius: 4px;
+}
+
+.hero__blueprint-row:nth-child(3) {
+  background-color: var(--color-primary);
+}
+
+.hero__blueprint-row:nth-child(4) {
+  background-color: #ffd86f;
+}
+
+[data-theme='neon'] .hero__blueprint {
+  border-color: rgba(163, 179, 175, 0.72);
+  background:
+    linear-gradient(90deg, rgba(67, 214, 181, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(67, 214, 181, 0.12) 1px, transparent 1px),
+    rgba(20, 33, 31, 0.78);
+  color: var(--color-text-light);
+}
+
+[data-theme='neon'] .hero__blueprint-row:nth-child(4) {
+  background-color: #2f6bff;
+}
+
+[data-theme='neon'] .hero__blueprint-row:nth-child(2) {
+  background-color: #d94a5f;
+}
+
+[data-theme='neon'] .hero__blueprint-row:nth-child(3) {
+  background-color: #34b86f;
+}
+
 /* ========================================
    姓名互動區
 ======================================== */
@@ -415,6 +576,30 @@
   }
 }
 
+@keyframes hero-orbit-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) rotate(-4deg) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) rotate(-4deg) scale(1);
+  }
+}
+
+@keyframes hero-stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(14deg) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(7deg) scale(1);
+  }
+}
+
 @keyframes hero-note-float-current {
   0%,
   100% {
@@ -493,6 +678,28 @@
   .hero__available {
     top: 370px;
   }
+
+  .hero__orbit {
+    width: min(720px, 88%);
+  }
+
+  .hero__blueprint {
+    bottom: 68px;
+    left: 4%;
+  }
+
+  .hero__coordinate--left {
+    left: 4%;
+  }
+
+  .hero__coordinate--right {
+    right: 4%;
+  }
+
+  .hero__stamp {
+    top: 94px;
+    right: 7%;
+  }
 }
 
 /* ========================================
@@ -564,13 +771,11 @@
   }
 
   .hero__drag--current {
-    top: 65px;
-    left: 0;
+    display: none;
   }
 
   .hero__drag--previous {
-    top: 140px;
-    right: 0;
+    display: none;
   }
 
   .hero__note {
@@ -589,6 +794,21 @@
     white-space: normal;
     text-align: center;
   }
+
+  .hero__coordinate,
+  .hero__stamp,
+  .hero__blueprint {
+    display: none;
+  }
+
+  .hero__orbit {
+    top: 154px;
+    display: block;
+    width: min(430px, 92%);
+    height: 170px;
+    border-width: 2px;
+    transform: translateX(-50%) rotate(-4deg);
+  }
 }
 
 /* ========================================
@@ -598,6 +818,10 @@
 @media (prefers-reduced-motion: reduce) {
   .hero__timebar,
   .hero__document-name,
+  .hero__orbit,
+  .hero__coordinate,
+  .hero__stamp,
+  .hero__blueprint,
   .hero__handwriting,
   .hero__name-box,
   .hero__note--current,

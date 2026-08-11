@@ -66,6 +66,21 @@ function About() {
             <p>about me</p>
           </div>
 
+          {/* 手機版固定照片：避免拖曳拍立得在窄螢幕跑位 */}
+          <figure className="about-section__mobile-polaroid">
+            <div className="about-section__photo about-section__photo--portrait">
+              <img
+                src={lexieProfileImage}
+                alt="Lexie 的個人照片"
+                onError={(event) => {
+                  event.currentTarget.style.display = 'none'
+                }}
+              />
+            </div>
+
+            <figcaption>lexie</figcaption>
+          </figure>
+
           <h2 className="about-section__introduction">
             不只寫程式，也理解使用者與商業需求
           </h2>

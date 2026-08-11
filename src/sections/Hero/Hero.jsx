@@ -47,6 +47,34 @@ function Hero() {
       <div className="hero__canvas">
         <p className="hero__document-name">PORTFOLIO / {profile.year}</p>
 
+        {/* 首頁畫布裝飾：用軌道、座標與印章增加設計工具感 */}
+        <div className="hero__orbit" aria-hidden="true" />
+
+        <div
+          className="hero__coordinate hero__coordinate--left"
+          aria-hidden="true"
+        >
+          x 182 / y 026
+        </div>
+
+        <div
+          className="hero__coordinate hero__coordinate--right"
+          aria-hidden="true"
+        >
+          grid 96px
+        </div>
+
+        <div className="hero__stamp" aria-hidden="true">
+          React Mode
+        </div>
+
+        <div className="hero__blueprint" aria-hidden="true">
+          <span className="hero__blueprint-label">component map</span>
+          <span className="hero__blueprint-row" />
+          <span className="hero__blueprint-row" />
+          <span className="hero__blueprint-row" />
+        </div>
+
         {/* 姓名互動區：便利貼與姓名都可以拖曳 */}
         <div className="hero__identity">
           {/* 左邊可拖曳便利貼 */}

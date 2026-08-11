@@ -104,28 +104,22 @@
   background-color: #18bdf4;
 }
 
-.navbar__link--active::before {
-  width: 18px;
-  height: 14px;
-
-  position: absolute;
-  top: 0;
-  left: 12px;
-
-  border-radius: 0 0 5px 5px;
-
-  background-color: #18bdf4;
-
-  content: '';
-  transform: translateY(-9px);
-}
-
 /*
  * active 同時也可能符合 hover，
  * 所以另外指定，避免 Hover 蓋掉主題色。
  */
 .navbar__link--active:hover {
   background-color: #18bdf4;
+}
+
+[data-theme='neon'] .navbar__link:hover {
+  color: #ffffff;
+  background-color: #070707;
+}
+
+[data-theme='neon'] .navbar__link--active:hover {
+  color: #ffffff;
+  background-color: #070707;
 }
 
 /* 右側功能區 */
@@ -213,6 +207,11 @@
 
   /* 平板先隱藏選單文字，只留下圖示 */
   .navbar__link {
+    width: 44px;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+
     font-size: 0;
   }
 
@@ -232,7 +231,8 @@
   }
 
   .navbar__link {
-    padding: 0 10px;
+    width: 38px;
+    padding: 0;
   }
 
   .navbar__actions {

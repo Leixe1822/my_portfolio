@@ -1,7 +1,6 @@
 /* HomePage 頁面：首頁內容，包含 Hero、簡短介紹與聯絡區 */
 import { useEffect, useRef, useState } from 'react'
 
-import profile from '../../data/profile'
 import Hero from '../../sections/Hero/Hero'
 import Contact from '../../sections/Contact/Contact'
 
@@ -53,12 +52,12 @@ function HomePage() {
       <section className={`home-about ${hasCodeStarted ? 'is-active' : ''}`}>
         <div className="home-about__heading">
           <span className="home-about__role-badge">
-            {profile.role.toUpperCase()}
+            JUNIOR FRONTEND DEVELOPER
           </span>
 
           <h2>
-            FROM BANKING
-            <span>TO FRONTEND.</span>
+            VISUAL THINKER.
+            <span>FRONTEND BUILDER.</span>
           </h2>
         </div>
 
@@ -86,39 +85,54 @@ function HomePage() {
               <span className="home-about__code-line">
                 {'  '}name:{' '}
                 <span className="home-about__code-string">
-                  &quot;緯緯&quot;
+                  &quot;Lexie&quot;
                 </span>
                 ,
               </span>
               <span className="home-about__code-line">
                 {'  '}role:{' '}
                 <span className="home-about__code-string">
-                  &quot;Frontend Developer&quot;
+                  &quot;初階前端工程師&quot;
                 </span>
                 ,
               </span>
               <span className="home-about__code-line">
                 {'  '}location:{' '}
                 <span className="home-about__code-string">
-                  &quot;Kaohsiung, Taiwan&quot;
+                  &quot;高雄，台灣&quot;
                 </span>
                 ,
               </span>
               <span className="home-about__code-line">
                 {'  '}strengths: [
                 <span className="home-about__code-string">
-                  &quot;同理心&quot;
+                  &quot;視覺思維&quot;
                 </span>
                 ,{' '}
                 <span className="home-about__code-string">
-                  &quot;溝通力&quot;
+                  &quot;使用者導向&quot;
+                </span>
+                ,{' '}
+                <span className="home-about__code-string">
+                  &quot;溝通協調&quot;
                 </span>
                 ],
               </span>
               <span className="home-about__code-line">
-                {'  '}learning:{' '}
+                {'  '}experience: [
                 <span className="home-about__code-string">
-                  &quot;Every day&quot;
+                  &quot;行銷企劃&quot;
+                </span>
+                ,{' '}
+                <span className="home-about__code-string">
+                  &quot;銀行貸款業務&quot;
+                </span>
+                ],
+              </span>
+              <span className="home-about__code-line">
+                {'  '}seeking:{' '}
+                <span className="home-about__code-string">
+                  &quot;前端工程師職缺&quot;
                 </span>
               </span>
               <span className="home-about__code-line">{'}'};</span>

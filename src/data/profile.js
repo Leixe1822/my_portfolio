@@ -6,8 +6,8 @@ const profile = {
   language: 'TW',
   role: 'Frontend Developer',
   year: '2026',
-  email: 'hello@lexie.dev',
-  githubUrl: 'https://github.com/weiting',
+  email: 'worklexie22@gmail.com',
+  githubUrl: 'https://github.com/Leixe1822',
   linkedinUrl: 'https://www.linkedin.com/in/weiting',
 }
 
