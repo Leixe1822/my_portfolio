@@ -152,4 +152,16 @@
   .project-card__preview {
     padding-top: 18px;
   }
+
+  .project-card__tags {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .project-card__tags li {
+    padding: 5px 8px;
+    font-size: clamp(0.52rem, 2.8vw, 0.62rem);
+    white-space: nowrap;
+  }
 }

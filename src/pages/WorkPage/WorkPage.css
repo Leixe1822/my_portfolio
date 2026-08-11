@@ -94,7 +94,7 @@
 @media (max-width: 850px) {
   .work-page__hero {
     width: calc(100% - 24px);
-    padding: 70px 20px 24px;
+    padding: 70px 20px 12px;
   }
 
   .work-page__mini-mark {

@@ -72,7 +72,10 @@
 @media (max-width: 900px) {
   .playground-page__canvas {
     width: calc(100% - 24px);
+    margin-bottom: -1px;
     padding: 70px 20px 72px;
+
+    border-bottom: 1px solid var(--color-border);
   }
 
   .playground-page__folder-demo {

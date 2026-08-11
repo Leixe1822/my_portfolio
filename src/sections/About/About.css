@@ -17,7 +17,7 @@
   border-left: 1px solid var(--color-border);
 
   color: var(--text-primary, #111817);
-  background-color: transparent;
+  background-color: var(--color-background);
 
   scroll-margin-top: 100px;
 }
@@ -527,7 +527,7 @@
   }
 
   .about-section__curve {
-    top: -300px;
+    top: -322px;
     width: 170%;
   }
 
@@ -543,7 +543,16 @@
   }
 
   .about-section__title-box {
-    margin-bottom: 34px;
+    margin-top: -10px;
+    margin-bottom: 38px;
+  }
+
+  .about-section__title-box::before {
+    height: 54px;
+  }
+
+  .about-section__title-box::after {
+    bottom: calc(100% + 46px);
   }
 
   .about-section__title-box p {

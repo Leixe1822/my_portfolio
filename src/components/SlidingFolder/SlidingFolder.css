@@ -64,7 +64,8 @@
   background:
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
     linear-gradient(var(--grid-line) 1px, transparent 1px), var(--color-surface);
-  background-size: 38px 38px;
+  background-position: top center;
+  background-size: var(--grid-size) var(--grid-size);
 }
 
 .sliding-folder__panel--preview-only {
@@ -293,7 +294,7 @@
 }
 
 .sliding-folder__phone-screen {
-  aspect-ratio: 390 / 844;
+  aspect-ratio: 390 / 812;
   padding: 0;
 
   overflow: hidden;

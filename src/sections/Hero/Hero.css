@@ -14,7 +14,7 @@
   border-right: 1px solid var(--color-border);
   border-left: 1px solid var(--color-border);
   color: var(--text-primary, #111817);
-  background-color: transparent;
+  background-color: var(--color-background);
 }
 
 .hero,
@@ -203,18 +203,7 @@
 
   border: 2px solid var(--color-text-light);
   border-radius: 8px;
-  background:
-    linear-gradient(
-      90deg,
-      var(--hero-blueprint-grid, rgba(101, 115, 111, 0.16)) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      var(--hero-blueprint-grid, rgba(101, 115, 111, 0.16)) 1px,
-      transparent 1px
-    ),
-    var(--hero-blueprint-bg, rgba(244, 247, 243, 0.58));
-  background-size: 18px 18px;
+  background: var(--hero-blueprint-bg, rgba(244, 247, 243, 0.58));
 
   color: var(--color-text-light);
   transform: rotate(-3deg);
@@ -247,10 +236,7 @@
 
 [data-theme='neon'] .hero__blueprint {
   border-color: rgba(163, 179, 175, 0.72);
-  background:
-    linear-gradient(90deg, rgba(67, 214, 181, 0.12) 1px, transparent 1px),
-    linear-gradient(rgba(67, 214, 181, 0.12) 1px, transparent 1px),
-    rgba(20, 33, 31, 0.78);
+  background: rgba(20, 33, 31, 0.78);
   color: var(--color-text-light);
 }
 
@@ -732,7 +718,7 @@
   }
 
   .hero__canvas {
-    padding: 24px 16px 48px;
+    padding: 24px 16px 18px;
   }
 
   .hero__document-name {
@@ -740,7 +726,7 @@
   }
 
   .hero__identity {
-    height: 440px;
+    height: 380px;
     margin-top: 10px;
   }
 
@@ -785,7 +771,7 @@
   }
 
   .hero__available {
-    top: 360px;
+    top: 330px;
     width: 100%;
     justify-content: center;
     padding: 0 16px;
