@@ -17,8 +17,12 @@ function PlaygroundPage() {
           <SlidingFolder />
         </div>
 
-        <a className="playground-page__contact" href="/#contact">
-          CONTACT
+        <a
+          className="playground-page__contact"
+          href="/#contact"
+          aria-label="Go to contact section"
+        >
+          <span>CONTACT</span>
           <ArrowUpRight size={15} strokeWidth={2.5} />
         </a>
       </section>
