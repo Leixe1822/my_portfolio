@@ -1,6 +1,5 @@
-/* Hero 區塊：首頁首屏，包含即時時間、可拖曳姓名與聯絡 CTA */
+/* Hero 區塊：首頁首屏，包含即時時間、可拖曳姓名與狀態標籤 */
 import { useEffect, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
 
 import Draggable from '../../components/Draggable/Draggable'
 import profile from '../../data/profile'
@@ -84,38 +83,6 @@ function Hero() {
             <span className="hero__available-dot" />
             <span>AVAILABLE FOR FRONTEND OPPORTUNITIES</span>
           </div>
-        </div>
-
-        {/* 下方介紹：角色、簡介與聯絡按鈕 */}
-        <div className="hero__bottom">
-          <span className="hero__tag hero__tag--role">
-            {profile.role.toUpperCase()}
-          </span>
-
-          <div className="hero__intro">
-            <h2>
-              I build thoughtful
-              <br />
-              digital experiences.
-            </h2>
-
-            <p>
-              從銀行業務跨足前端開發，喜歡將複雜資訊整理成清楚、
-              好用而且具有質感的網頁體驗。
-            </p>
-
-            <a className="hero__contact" href="#contact">
-              <span>CONTACT ME</span>
-
-              <span className="hero__contact-icon" aria-hidden="true">
-                <ArrowUpRight size={16} strokeWidth={2.5} />
-              </span>
-            </a>
-          </div>
-
-          <span className="hero__tag hero__tag--location">
-            {profile.location.toUpperCase()}
-          </span>
         </div>
       </div>
     </section>

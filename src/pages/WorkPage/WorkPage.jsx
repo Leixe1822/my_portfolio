@@ -7,7 +7,7 @@ function WorkPage() {
     <main className="work-page">
       <section className="work-page__hero">
         <p>WORK / CASE STUDIES</p>
-        <h1>Selected projects from practice, study, and portfolio building.</h1>
+        <h1>Projects</h1>
       </section>
 
       <Projects />

@@ -36,21 +36,21 @@
   --border-color: var(--color-border);
 }
 
-/* 深藍螢光綠：App 將 data-theme="neon" 設定在 <html> 上 */
+/* 深色薄荷科技感：App 將 data-theme="neon" 設定在 <html> 上 */
 [data-theme='neon'] {
-  --color-background: #0c111d;
-  --grid-line: rgba(184, 243, 90, 0.1);
-  --color-surface: #151c2b;
-  --color-surface-soft: #20283a;
+  --color-background: #0f1715;
+  --grid-line: rgba(67, 214, 181, 0.12);
+  --color-surface: #14211f;
+  --color-surface-soft: #1d2c29;
 
-  --color-text: #f5f7fa;
-  --color-text-light: #9ca8ba;
+  --color-text: #f4f7f3;
+  --color-text-light: #a3b3af;
 
-  --color-primary: #b8f35a;
-  --color-secondary: #5b8cff;
-  --color-border: #293142;
+  --color-primary: #43d6b5;
+  --color-secondary: #8b6cff;
+  --color-border: #30413d;
 
-  --color-primary-text: #10180a;
+  --color-primary-text: #071f19;
   --shadow-color: rgba(0, 0, 0, 0.35);
 
   --background: var(--color-background);

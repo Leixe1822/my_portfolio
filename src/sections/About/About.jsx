@@ -1,59 +1,35 @@
 /* About 區塊：自我介紹、技能標籤與可拖曳拍立得 */
-import {
-  Blocks,
-  Braces,
-  Code2,
-  Component,
-  GitBranch,
-  LayoutTemplate,
-  Palette,
-  Smartphone,
-} from 'lucide-react'
+import { Code2 } from 'lucide-react'
 
 import Draggable from '../../components/Draggable/Draggable'
+import lexieProfileImage from '../../assets/images/lexie-profile.png'
 import './About.css'
 
-/* 技能資料：每個項目指定名稱、lucide icon 與對應色票 class */
-const skills = [
+const basePath = import.meta.env.BASE_URL
+
+/* About 優勢資料：統一管理卡片標題與說明 */
+const strengths = [
   {
-    name: 'HTML',
-    icon: Code2,
-    color: 'yellow',
+    title: '視覺敏感度',
+    description: '具備藝術大學學習背景，重視版面、色彩、層級與整體視覺一致性。',
   },
   {
-    name: 'CSS',
-    icon: Palette,
-    color: 'mint',
+    title: '企劃與資訊整理',
+    description: '能從目標與受眾出發，將零散或複雜的資訊整理成清楚易懂的內容。',
   },
   {
-    name: 'JavaScript',
-    icon: Braces,
-    color: 'pink',
+    title: '需求理解與溝通',
+    description: '具備第一線客戶服務與貸款業務經驗，能主動釐清需求並耐心溝通。',
   },
   {
-    name: 'React',
-    icon: Component,
-    color: 'blue',
+    title: '商業思維與執行力',
+    description:
+      '理解成果、時程與使用者需求之間的關係，並能持續追蹤問題直到完成。',
   },
   {
-    name: 'Responsive Design',
-    icon: Smartphone,
-    color: 'purple',
-  },
-  {
-    name: 'GitHub',
-    icon: GitBranch,
-    color: 'green',
-  },
-  {
-    name: 'UI Layout',
-    icon: LayoutTemplate,
-    color: 'orange',
-  },
-  {
-    name: 'Components',
-    icon: Blocks,
-    color: 'cyan',
+    title: '持續學習／持續實作',
+    description:
+      '持續學習 HTML、CSS、JavaScript 與 React，並透過作品練習前端實作。',
   },
 ]
 
@@ -64,72 +40,88 @@ function About() {
       <div className="about-section__curve" aria-hidden="true" />
 
       <div className="about-section__container">
-        <p className="about-section__handwriting">about me!</p>
-
         {/* 左側可拖曳拍立得 */}
-        <Draggable className="about-section__photo-drag about-section__photo-drag--left">
+        <Draggable
+          className="about-section__photo-drag about-section__photo-drag--left"
+          storageKey="about-lexie-polaroid-position"
+        >
           <figure className="about-section__polaroid about-section__polaroid--left">
-            <div className="about-section__photo">
+            <div className="about-section__photo about-section__photo--portrait">
               <img
-                src="/images/profile.svg"
+                src={lexieProfileImage}
                 alt="Lexie 的個人照片"
                 onError={(event) => {
                   event.currentTarget.style.display = 'none'
                 }}
               />
-
-              <span>LEXIE</span>
             </div>
 
-            <figcaption>2026</figcaption>
+            <figcaption>lexie</figcaption>
           </figure>
         </Draggable>
 
         {/* 中間自我介紹 */}
         <div className="about-section__content">
           <div className="about-section__title-box">
-            <span className="about-section__handle about-section__handle--top-left" />
-            <span className="about-section__handle about-section__handle--top-right" />
-
-            <p>what&apos;s up</p>
-
-            <span className="about-section__handle about-section__handle--bottom-left" />
-            <span className="about-section__handle about-section__handle--bottom-right" />
+            <p>about me</p>
           </div>
 
           <h2 className="about-section__introduction">
-            I&apos;m <strong>Lexie</strong>, a junior frontend developer based
-            in <span className="about-section__highlight">Kaohsiung</span> who
-            enjoys turning complicated information into clear and thoughtful
-            digital experiences.
+            不只寫程式，也理解使用者與商業需求
           </h2>
 
           <p className="about-section__description">
-            過去從事銀行業務，累積了溝通、需求分析與問題解決的經驗。
-            現在專注學習前端開發，希望把對使用者需求的理解，轉化成清楚、
-            好用而且具有質感的網頁體驗。
+            我是 Lexie，畢業於國立臺灣藝術大學，目前正朝前端工程師發展。
           </p>
 
-          {/* 技能列表 */}
-          <div className="about-section__skills">
-            {skills.map(({ name, icon: Icon, color }) => (
-              <div
-                className={`about-section__skill about-section__skill--${color}`}
-                key={name}
-              >
-                <Icon size={20} strokeWidth={2.2} />
-                <span>{name}</span>
-              </div>
-            ))}
+          <p className="about-section__description">
+            過去曾從事行銷企劃與銀行貸款業務。行銷工作培養了我從目標受眾出發、
+            規劃內容並整合資訊的能力；銀行貸款業務則讓我累積了第一線需求訪談、
+            溝通協調、問題分析與流程追蹤的經驗。
+          </p>
+
+          <p className="about-section__description">
+            這些經歷讓我理解，一個好的產品不只需要漂亮的畫面，
+            更需要清楚的資訊架構、直覺的操作流程，以及對使用者真正需求的理解。
+          </p>
+
+          <p className="about-section__description">
+            目前我持續學習 HTML、CSS、JavaScript 與
+            React，並透過作品練習元件拆分、
+            狀態管理、響應式排版與互動功能。我希望結合過去累積的視覺敏感度、
+            企劃思維與客戶溝通能力，成為能同時理解設計、使用者與商業目標的前端工程師。
+          </p>
+
+          {/* 優勢列表 */}
+          <div className="about-section__strengths">
+            <h3>我的優勢</h3>
+
+            <div className="about-section__strength-track">
+              {[...strengths, ...strengths].map(
+                ({ title, description }, index) => (
+                  <article
+                    className="about-section__strength"
+                    key={`${title}-${index}`}
+                    aria-hidden={index >= strengths.length}
+                  >
+                    <h4>{title}</h4>
+                    <p>{description}</p>
+                  </article>
+                ),
+              )}
+            </div>
           </div>
         </div>
 
         {/* 右側可拖曳拍立得 */}
-        <Draggable className="about-section__photo-drag about-section__photo-drag--right">
+        <Draggable
+          className="about-section__photo-drag about-section__photo-drag--right"
+          storageKey="about-workspace-polaroid-position"
+        >
           <figure className="about-section__polaroid about-section__polaroid--right">
             <div className="about-section__photo about-section__photo--workspace">
               <img
-                src="/images/workspace.svg"
+                src={`${basePath}images/workspace.svg`}
                 alt="Lexie 的工作空間"
                 onError={(event) => {
                   event.currentTarget.style.display = 'none'

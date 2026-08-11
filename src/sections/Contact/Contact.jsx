@@ -5,11 +5,16 @@ import './Contact.css'
 function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <p className="contact-section__eyebrow">04 / CONTACT</p>
+      <div className="contact-section__badge">
+        <span className="contact-section__handle contact-section__handle--top-left" />
+        <span className="contact-section__handle contact-section__handle--top-right" />
+        <span className="contact-section__handle contact-section__handle--bottom-left" />
+        <span className="contact-section__handle contact-section__handle--bottom-right" />
 
-      <h2>Let&apos;s build the next screen.</h2>
+        <h2>CONTACT</h2>
+      </div>
 
-      <div className="contact-section__links">
+      <div className="contact-section__links" aria-label="Contact links">
         <a href={`mailto:${profile.email}`}>EMAIL</a>
         <a href={profile.githubUrl} target="_blank" rel="noreferrer">
           GITHUB

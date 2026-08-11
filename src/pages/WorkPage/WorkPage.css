@@ -1,5 +1,7 @@
 /* WorkPage 樣式：作品頁開場大標題區 */
 .work-page {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -7,7 +9,7 @@
   width: calc(100% - 48px);
   max-width: 1500px;
   margin: 0 auto;
-  padding: 96px 70px 24px;
+  padding: 70px 70px 24px;
 
   border-right: 1px solid var(--color-border);
   border-left: 1px solid var(--color-border);
@@ -25,10 +27,10 @@
 }
 
 .work-page__hero h1 {
-  max-width: 980px;
+  max-width: 960px;
   margin: 0;
 
-  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
   line-height: 0.9;
   letter-spacing: -0.07em;
 }
@@ -36,6 +38,6 @@
 @media (max-width: 850px) {
   .work-page__hero {
     width: calc(100% - 24px);
-    padding: 72px 20px 20px;
+    padding: 70px 20px 20px;
   }
 }

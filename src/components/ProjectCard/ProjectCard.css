@@ -1,42 +1,99 @@
 /* ProjectCard 樣式：作品卡片的預覽區、內容區與標籤排列 */
 .project-card {
-  display: grid;
-  grid-template-columns: minmax(180px, 0.45fr) 1fr;
+  position: relative;
+
+  display: flex;
+  min-height: 360px;
   overflow: hidden;
+  flex-direction: column;
 
   border: 2px solid var(--color-text);
+  border-radius: 22px;
 
   color: var(--color-text);
   background-color: var(--color-surface);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card--mint {
+  box-shadow: 10px 10px 0 var(--color-primary);
+}
+
+.project-card--mint:hover {
+  box-shadow: 14px 14px 0 var(--color-primary);
+}
+
+.project-card--yellow {
+  box-shadow: 10px 10px 0 #ffd86f;
+}
+
+.project-card--yellow:hover {
+  box-shadow: 14px 14px 0 #ffd86f;
+}
+
+.project-card--purple {
+  box-shadow: 10px 10px 0 var(--color-secondary);
+}
+
+.project-card--purple:hover {
+  box-shadow: 14px 14px 0 var(--color-secondary);
 }
 
 .project-card__preview {
-  min-height: 230px;
+  min-height: auto;
+  padding: 22px 24px 0;
 
-  display: grid;
-  place-items: center;
-
-  border-right: 2px solid var(--color-text);
-
-  color: #111817;
-  background-color: var(--color-primary);
+  color: var(--color-text);
+  background-color: transparent;
 
   font-family: 'Space Mono', monospace;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
+.project-card__preview span {
+  display: inline-grid;
+  width: 56px;
+  height: 56px;
+
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+
+  background-color: var(--color-primary);
+
+  place-items: center;
+}
+
 .project-card--yellow .project-card__preview {
+  background-color: transparent;
+}
+
+.project-card--yellow .project-card__preview span {
   background-color: #ffd86f;
 }
 
 .project-card--purple .project-card__preview {
+  color: var(--color-text);
+  background-color: transparent;
+}
+
+.project-card--purple .project-card__preview span {
   color: #ffffff;
   background-color: var(--color-secondary);
 }
 
 .project-card__content {
-  padding: 28px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 28px 24px 24px;
 }
 
 .project-card__meta {
@@ -54,9 +111,9 @@
 .project-card h3 {
   margin: 0 0 16px;
 
-  font-size: clamp(1.7rem, 3vw, 2.7rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  line-height: 1.08;
+  letter-spacing: 0;
 }
 
 .project-card p {
@@ -70,16 +127,17 @@
   flex-wrap: wrap;
   gap: 8px;
 
-  margin: 28px 0 0;
-  padding: 0;
+  margin: auto 0 0;
+  padding-top: 28px;
 
   list-style: none;
 }
 
 .project-card__tags li {
-  padding: 7px 10px;
+  padding: 7px 11px;
 
   border: 1px solid var(--color-border);
+  border-radius: 999px;
 
   font-family: 'Space Mono', monospace;
   font-size: 0.7rem;
@@ -88,12 +146,10 @@
 
 @media (max-width: 720px) {
   .project-card {
-    grid-template-columns: 1fr;
+    min-height: 320px;
   }
 
   .project-card__preview {
-    min-height: 150px;
-    border-right: 0;
-    border-bottom: 2px solid var(--color-text);
+    padding-top: 18px;
   }
 }

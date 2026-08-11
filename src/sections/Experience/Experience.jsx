@@ -19,7 +19,6 @@ function Experience() {
   return (
     <section className="experience-section">
       <div className="experience-section__header">
-        <p>03 / EXPERIENCE</p>
         <h2>Different background, practical frontend mindset.</h2>
       </div>
 

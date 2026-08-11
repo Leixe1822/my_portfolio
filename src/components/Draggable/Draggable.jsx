@@ -1,9 +1,32 @@
 /* Draggable 元件：提供可拖曳容器，讓子元素可以在畫面上移動 */
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Draggable.css'
 
+function getSavedPosition(storageKey) {
+  if (!storageKey) {
+    return { x: 0, y: 0 }
+  }
+
+  try {
+    const savedPosition = window.localStorage.getItem(storageKey)
+
+    if (!savedPosition) {
+      return { x: 0, y: 0 }
+    }
+
+    const parsedPosition = JSON.parse(savedPosition)
+
+    return {
+      x: Number(parsedPosition.x) || 0,
+      y: Number(parsedPosition.y) || 0,
+    }
+  } catch {
+    return { x: 0, y: 0 }
+  }
+}
+
 /* 讓包在裡面的內容可以用滑鼠拖曳移動 */
-function Draggable({ children, className = '' }) {
+function Draggable({ children, className = '', storageKey = '' }) {
   /* DOM ref 用來設定與確認 pointer capture */
   const elementRef = useRef(null)
 
@@ -12,11 +35,17 @@ function Draggable({ children, className = '' }) {
   const startPosition = useRef({ x: 0, y: 0 })
 
   /* position 會被轉成 CSS 變數，交給 CSS 做 transform */
-  const [position, setPosition] = useState({
-    x: 0,
-    y: 0,
-  })
+  const [position, setPosition] = useState(() => getSavedPosition(storageKey))
   const [isDragging, setIsDragging] = useState(false)
+
+  /* 有提供 storageKey 時，拖曳後的位置會在重整後保留 */
+  useEffect(() => {
+    if (!storageKey) {
+      return
+    }
+
+    window.localStorage.setItem(storageKey, JSON.stringify(position))
+  }, [position, storageKey])
 
   function handlePointerDown(event) {
     /* 只接受滑鼠左鍵 */

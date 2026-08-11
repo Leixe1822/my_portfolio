@@ -7,11 +7,6 @@ import './Projects.css'
 function Projects() {
   return (
     <section id="projects" className="projects-section">
-      <div className="projects-section__header">
-        <p>02 / SELECTED WORK</p>
-        <h2>Case studies that turn messy information into usable screens.</h2>
-      </div>
-
       <div className="projects-section__grid">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />

@@ -1,10 +1,16 @@
 /* HomePage 頁面：首頁內容，包含 Hero、簡短介紹與聯絡區 */
+import { useEffect, useRef, useState } from 'react'
+
+import profile from '../../data/profile'
 import Hero from '../../sections/Hero/Hero'
 import Contact from '../../sections/Contact/Contact'
 
 import './HomePage.css'
 
 function HomePage() {
+  const codeCardRef = useRef(null)
+  const [hasCodeStarted, setHasCodeStarted] = useState(false)
+
   /* 首頁短版技能標籤，搭配 index 決定不同顏色 */
   const skills = [
     'HTML',
@@ -15,15 +21,40 @@ function HomePage() {
     'Responsive Design',
   ]
 
+  /* 滑到 About code 卡片時才開始打字動畫 */
+  useEffect(() => {
+    const codeCard = codeCardRef.current
+
+    if (!codeCard || hasCodeStarted) {
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasCodeStarted(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.35 },
+    )
+
+    observer.observe(codeCard)
+
+    return () => observer.disconnect()
+  }, [hasCodeStarted])
+
   return (
     <main className="home-page">
       {/* 首頁第一屏互動畫布 */}
       <Hero />
 
       {/* 首頁簡短自我介紹 */}
-      <section className="home-about">
+      <section className={`home-about ${hasCodeStarted ? 'is-active' : ''}`}>
         <div className="home-about__heading">
-          <p>01 / A LITTLE ABOUT ME</p>
+          <span className="home-about__role-badge">
+            {profile.role.toUpperCase()}
+          </span>
 
           <h2>
             FROM BANKING
@@ -31,23 +62,68 @@ function HomePage() {
           </h2>
         </div>
 
-        <div className="home-about__content">
-          <p className="home-about__label">WHAT&apos;S UP!</p>
+        <div
+          className={`home-about__code-card ${
+            hasCodeStarted ? 'is-typing' : ''
+          }`}
+          ref={codeCardRef}
+          aria-label="developer profile"
+        >
+          <div className="home-about__code-header">
+            <span className="home-about__code-dot home-about__code-dot--red" />
+            <span className="home-about__code-dot home-about__code-dot--yellow" />
+            <span className="home-about__code-dot home-about__code-dot--green" />
+            <span className="home-about__code-file">developer.js</span>
+          </div>
 
-          <p className="home-about__description">
-            嗨，我是 Lexie。畢業於國立臺灣藝術大學，曾任行銷企劃與銀行貸款業務。
-          </p>
-
-          <p className="home-about__description">
-            過往經歷讓我具備內容企劃、需求理解、溝通協調與目標導向的執行能力。
-            現在專注於 React 前端開發，希望將視覺、使用者需求與技術整合，
-            打造兼具美感與實用性的數位產品。
-          </p>
-
-          <a className="home-about__link" href="#contact">
-            查看聯絡方式
-            <span>↗</span>
-          </a>
+          <pre className="home-about__code">
+            <code>
+              <span className="home-about__code-line">
+                <span className="home-about__code-keyword">const</span>{' '}
+                <span className="home-about__code-variable">developer</span> ={' '}
+                {'{'}
+              </span>
+              <span className="home-about__code-line">
+                {'  '}name:{' '}
+                <span className="home-about__code-string">
+                  &quot;緯緯&quot;
+                </span>
+                ,
+              </span>
+              <span className="home-about__code-line">
+                {'  '}role:{' '}
+                <span className="home-about__code-string">
+                  &quot;Frontend Developer&quot;
+                </span>
+                ,
+              </span>
+              <span className="home-about__code-line">
+                {'  '}location:{' '}
+                <span className="home-about__code-string">
+                  &quot;Kaohsiung, Taiwan&quot;
+                </span>
+                ,
+              </span>
+              <span className="home-about__code-line">
+                {'  '}strengths: [
+                <span className="home-about__code-string">
+                  &quot;同理心&quot;
+                </span>
+                ,{' '}
+                <span className="home-about__code-string">
+                  &quot;溝通力&quot;
+                </span>
+                ],
+              </span>
+              <span className="home-about__code-line">
+                {'  '}learning:{' '}
+                <span className="home-about__code-string">
+                  &quot;Every day&quot;
+                </span>
+              </span>
+              <span className="home-about__code-line">{'}'};</span>
+            </code>
+          </pre>
         </div>
 
         {/* 使用 map 產生技能標籤 */}

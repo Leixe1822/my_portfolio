@@ -9,10 +9,10 @@
   position: relative;
   width: calc(100% - 48px);
   max-width: 1500px;
-  min-height: 900px;
+  min-height: 1110px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 150px 32px 90px;
+  padding: 180px 32px 96px;
   border-right: 1px solid var(--color-border);
   border-left: 1px solid var(--color-border);
 
@@ -58,28 +58,12 @@
 .about-section__container {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   width: min(1250px, 100%);
-  min-height: 680px;
+  min-height: 930px;
   margin: 0 auto;
-}
-
-/* about me 手寫字 */
-.about-section__handwriting {
-  position: absolute;
-  top: 15px;
-  left: 8%;
-
-  margin: 0;
-
-  color: var(--text-primary, #111817);
-
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.8rem;
-
-  transform: rotate(8deg);
 }
 
 /* ========================================
@@ -92,36 +76,95 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
-  width: min(790px, 72%);
+  width: min(1040px, 82%);
   margin: 0 auto;
 
-  text-align: center;
+  text-align: left;
 }
 
-/* what's up 選取框 */
+/* about me 吊牌 */
 .about-section__title-box {
   position: relative;
   display: inline-block;
 
-  margin-bottom: 38px;
-  padding: 7px 14px;
+  margin: 0 auto 76px;
+  padding: 9px 18px 10px;
 
   border: 2px solid var(--text-primary, #111817);
-  background-color: transparent;
+  border-radius: 2px;
+  background-color: var(--background, #f4f7f3);
+
+  transform-origin: 50% -42px;
+  animation: about-tag-swing 1.35s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.about-section__title-box::before {
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+
+  width: 2px;
+  height: 44px;
+
+  background-color: var(--text-primary, #111817);
+
+  content: '';
+  transform: translateX(-50%);
+}
+
+.about-section__title-box::after {
+  position: absolute;
+  bottom: calc(100% + 36px);
+  left: 50%;
+
+  width: 12px;
+  height: 12px;
+
+  border: 2px solid var(--text-primary, #111817);
+  border-radius: 50%;
+  background-color: var(--accent, #45d6b5);
+
+  content: '';
+  transform: translateX(-50%);
 }
 
 .about-section__title-box p {
   margin: 0;
 
-  font-family: Arial, sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.8rem;
   font-weight: 500;
   line-height: 1;
 }
 
-/* 選取框四個角 */
+@keyframes about-tag-swing {
+  0% {
+    transform: rotate(-9deg) translateY(-18px);
+    opacity: 0;
+  }
+
+  35% {
+    transform: rotate(7deg) translateY(0);
+    opacity: 1;
+  }
+
+  58% {
+    transform: rotate(-4deg);
+  }
+
+  78% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* 舊版選取框角保留為未使用樣式，方便日後需要時復原 */
 .about-section__handle {
   position: absolute;
 
@@ -159,16 +202,19 @@
 
 /* 自我介紹標題 */
 .about-section__introduction {
-  max-width: 800px;
+  width: 100%;
+  max-width: none;
   margin: 0;
 
   color: var(--text-primary, #111817);
 
   font-family: Arial, sans-serif;
-  font-size: clamp(2.1rem, 3.8vw, 3.8rem);
-  font-weight: 500;
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.045em;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .about-section__introduction strong {
@@ -188,8 +234,9 @@
 
 /* 中文介紹 */
 .about-section__description {
-  max-width: 650px;
-  margin: 26px auto 0;
+  width: 100%;
+  max-width: 760px;
+  margin: 20px auto 0;
 
   color: var(--text-secondary, #65736f);
 
@@ -198,69 +245,100 @@
   line-height: 1.9;
 }
 
-/* ========================================
-   技能色塊
-======================================== */
-
-.about-section__skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 7px;
-
-  max-width: 760px;
-  margin-top: 38px;
+.about-section__introduction + .about-section__description {
+  margin-top: 50px;
 }
 
-.about-section__skill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+/* ========================================
+   優勢卡片
+======================================== */
 
-  min-height: 45px;
-  padding: 8px 13px;
+.about-section__strengths {
+  width: 100%;
+  max-width: 960px;
+  margin: 108px auto 0;
+  overflow: hidden;
+}
+
+.about-section__strengths h3 {
+  margin: 0 0 16px;
+
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.about-section__strength-track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  padding: 0 10px 14px 0;
+
+  animation: about-strength-carousel 28s linear infinite;
+}
+
+.about-section__strengths:hover .about-section__strength-track {
+  animation-play-state: paused;
+}
+
+.about-section__strength {
+  width: 260px;
+  min-height: 132px;
+  flex: 0 0 260px;
+  padding: 20px;
 
   border: 2px solid var(--text-primary, #111817);
 
-  color: #111817;
-
-  font-family: Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background-color: var(--color-surface);
 }
 
-.about-section__skill--yellow {
-  background-color: #f8bd31;
+.about-section__strength h4 {
+  margin: 0 0 10px;
+
+  color: var(--text-primary, #111817);
+
+  font-size: 1rem;
+  font-weight: 800;
 }
 
-.about-section__skill--mint {
-  background-color: #45d6b5;
+.about-section__strength p {
+  margin: 0;
+
+  color: var(--text-secondary, #65736f);
+
+  font-size: 0.92rem;
+  line-height: 1.7;
 }
 
-.about-section__skill--pink {
-  color: #ffffff;
-  background-color: #f43678;
+.about-section__strength:nth-child(5n + 1) {
+  box-shadow: 8px 8px 0 var(--accent, #45d6b5);
 }
 
-.about-section__skill--blue {
-  background-color: #44c7ef;
+.about-section__strength:nth-child(5n + 2) {
+  box-shadow: 8px 8px 0 var(--color-secondary);
 }
 
-.about-section__skill--purple {
-  color: #ffffff;
-  background-color: #7557ff;
+.about-section__strength:nth-child(5n + 3) {
+  box-shadow: 8px 8px 0 #ffd86f;
 }
 
-.about-section__skill--green {
-  background-color: #73d65c;
+.about-section__strength:nth-child(5n + 4) {
+  box-shadow: 8px 8px 0 var(--accent, #45d6b5);
 }
 
-.about-section__skill--orange {
-  background-color: #ff8c42;
+.about-section__strength:nth-child(5n) {
+  box-shadow: 8px 8px 0 var(--color-secondary);
 }
 
-.about-section__skill--cyan {
-  background-color: #77e0e8;
+@keyframes about-strength-carousel {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
 }
 
 /* ========================================
@@ -274,13 +352,13 @@
 }
 
 .about-section__photo-drag--left {
-  top: 310px;
-  left: 0;
+  top: 330px;
+  left: 4.8%;
 }
 
 .about-section__photo-drag--right {
-  top: 310px;
-  right: 0;
+  top: 705px;
+  right: 5.2%;
 }
 
 .about-section__polaroid {
@@ -304,6 +382,10 @@
   transform: rotate(10deg);
 }
 
+.about-section__polaroid--left {
+  padding-bottom: 9px;
+}
+
 .about-section__polaroid--right {
   transform: rotate(-9deg);
 }
@@ -319,7 +401,7 @@
   overflow: hidden;
 
   color: #111817;
-  background-color: var(--accent, #45d6b5);
+  background-color: #ffffff;
 
   font-family: 'Space Mono', monospace;
   font-weight: 700;
@@ -330,15 +412,27 @@
   background-color: #7557ff;
 }
 
+.about-section__photo--portrait {
+  background-color: #ffffff;
+}
+
 .about-section__photo img {
   position: absolute;
   inset: 0;
+  z-index: 2;
 
   display: block;
   width: 100%;
   height: 100%;
 
   object-fit: cover;
+  object-position: center 42%;
+}
+
+.about-section__photo span,
+.about-section__photo svg {
+  position: relative;
+  z-index: 1;
 }
 
 .about-section__polaroid figcaption {
@@ -393,24 +487,28 @@
   }
 
   .about-section {
-    padding-top: 130px;
+    padding-top: 150px;
   }
 
   .about-section__container {
-    min-height: 760px;
+    min-height: 1000px;
   }
 
   .about-section__content {
     width: min(720px, 84%);
   }
 
+  .about-section__introduction {
+    white-space: normal;
+  }
+
   .about-section__photo-drag--left {
-    top: 530px;
+    top: 580px;
     left: 2%;
   }
 
   .about-section__photo-drag--right {
-    top: 530px;
+    top: 770px;
     right: 2%;
   }
 
@@ -425,8 +523,8 @@
 
 @media (max-width: 700px) {
   .about-section {
-    min-height: 1050px;
-    padding: 110px 18px 70px;
+    min-height: 1360px;
+    padding: 110px 18px 72px;
   }
 
   .about-section__curve {
@@ -436,22 +534,16 @@
 
   .about-section__container {
     display: block;
-    min-height: 850px;
-  }
-
-  .about-section__handwriting {
-    top: 0;
-    left: 5%;
-    font-size: 1.5rem;
+    min-height: 1200px;
   }
 
   .about-section__content {
     width: 100%;
-    padding-top: 70px;
+    padding-top: 90px;
   }
 
   .about-section__title-box {
-    margin-bottom: 28px;
+    margin-bottom: 56px;
   }
 
   .about-section__title-box p {
@@ -460,29 +552,36 @@
 
   .about-section__introduction {
     font-size: clamp(1.9rem, 8.5vw, 2.8rem);
+    text-align: left;
+    white-space: normal;
   }
 
   .about-section__description {
     font-size: 0.9rem;
   }
 
-  .about-section__skills {
-    margin-top: 30px;
+  .about-section__introduction + .about-section__description {
+    margin-top: 38px;
   }
 
-  .about-section__skill {
-    min-height: 40px;
-    padding: 7px 9px;
-    font-size: 0.75rem;
+  .about-section__strengths {
+    margin-top: 86px;
+  }
+
+  .about-section__strength {
+    width: 230px;
+    flex-basis: 230px;
+    min-height: 150px;
+    padding: 16px;
   }
 
   .about-section__photo-drag--left {
-    top: 720px;
+    top: 890px;
     left: 3%;
   }
 
   .about-section__photo-drag--right {
-    top: 750px;
+    top: 1070px;
     right: 3%;
   }
 
@@ -491,7 +590,21 @@
   }
 
   .about-section__status {
-    bottom: -40px;
+    bottom: 0;
     font-size: 0.56rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section__title-box {
+    animation: none;
+  }
+
+  .about-section__strengths {
+    overflow-x: auto;
+  }
+
+  .about-section__strength-track {
+    animation: none;
   }
 }
