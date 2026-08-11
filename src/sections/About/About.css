@@ -164,42 +164,6 @@
   }
 }
 
-/* 舊版選取框角保留為未使用樣式，方便日後需要時復原 */
-.about-section__handle {
-  position: absolute;
-
-  display: block;
-  width: 9px;
-  height: 9px;
-
-  border: 2px solid var(--text-primary, #111817);
-  background-color: var(--background, #f4f7f3);
-}
-
-.about-section__handle--top-left {
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-}
-
-.about-section__handle--top-right {
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-}
-
-.about-section__handle--bottom-left {
-  bottom: 0;
-  left: 0;
-  transform: translate(-50%, 50%);
-}
-
-.about-section__handle--bottom-right {
-  right: 0;
-  bottom: 0;
-  transform: translate(50%, 50%);
-}
-
 /* 自我介紹標題 */
 .about-section__introduction {
   width: 100%;
