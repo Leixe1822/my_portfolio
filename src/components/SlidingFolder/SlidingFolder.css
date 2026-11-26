@@ -447,3 +447,98 @@
     font-size: 0.76rem;
   }
 }
+
+/* EatWhat：固定容器比例並疊放圖片，以透明度交叉淡入淡出，避免高度跳動。 */
+.sliding-folder__carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2880 / 1622;
+  touch-action: pan-y pinch-zoom;
+}
+
+.sliding-folder__carousel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.sliding-folder__carousel img.is-active {
+  opacity: 1;
+}
+
+.sliding-folder__carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.sliding-folder__carousel-controls button {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  color: var(--color-text);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.sliding-folder__carousel-controls button:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+.sliding-folder__carousel-status {
+  text-align: center;
+  min-width: 0;
+}
+.sliding-folder__carousel-status p {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0;
+}
+.sliding-folder__carousel-dots {
+  display: flex;
+  justify-content: center;
+}
+.sliding-folder__carousel-dots button {
+  border: 0;
+  background: transparent;
+  position: relative;
+}
+.sliding-folder__carousel-dots button::after {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  background: var(--color-surface);
+}
+.sliding-folder__carousel-dots button[aria-pressed='true']::after {
+  background: var(--color-primary);
+}
+
+@media (max-width: 650px) {
+  .sliding-folder__tab {
+    padding-inline: 5px;
+    font-size: clamp(0.58rem, 2.3vw, 0.82rem);
+  }
+  .sliding-folder__carousel-controls {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sliding-folder__carousel img {
+    transition: none;
+  }
+}

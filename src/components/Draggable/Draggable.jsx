@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './Draggable.css'
 
+// 儲存資料不存在、格式錯誤或瀏覽器禁止讀取時，從預設位置開始。
 function getSavedPosition(storageKey) {
   if (!storageKey) {
     return { x: 0, y: 0 }
@@ -44,7 +45,11 @@ function Draggable({ children, className = '', storageKey = '' }) {
       return
     }
 
-    window.localStorage.setItem(storageKey, JSON.stringify(position))
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(position))
+    } catch {
+      // 儲存空間已滿或禁止寫入時，仍保留本次頁面中的拖曳操作。
+    }
   }, [position, storageKey])
 
   function handlePointerDown(event) {

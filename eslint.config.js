@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
+// 檢查 JavaScript、React Hooks 與熱更新規則；略過自動產生的 dist。
 export default defineConfig([
   globalIgnores(['dist']),
   {

@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import SlidingFolder from '../../components/SlidingFolder/SlidingFolder'
 import './PlaygroundPage.css'
 
-function PlaygroundPage() {
+function PlaygroundPage({ language }) {
   return (
     <main className="playground-page">
       <section className="playground-page__canvas">
@@ -14,12 +14,12 @@ function PlaygroundPage() {
         </div>
 
         <div className="playground-page__folder-demo">
-          <SlidingFolder />
+          <SlidingFolder language={language} />
         </div>
 
         <a
           className="playground-page__contact"
-          href="/#contact"
+          href={`${import.meta.env.BASE_URL}#contact`}
           aria-label="Go to contact section"
         >
           <span>CONTACT</span>

@@ -16,13 +16,15 @@ function App() {
 
   /* 網站目前使用的主題 */
   const [theme, setTheme] = useState('mint')
+  /* 語系由共用導覽列切換，提供作品卡片與 Playground 圖片說明使用。 */
+  const [language, setLanguage] = useState('zh')
 
   /* 將目前主題設定在 html 的 data-theme */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
-  /* 切換薄荷與深藍螢光綠主題 */
+  /* 切換淺色薄荷與深色薄荷主題 */
   function handleToggleTheme() {
     setTheme((currentTheme) => (currentTheme === 'mint' ? 'neon' : 'mint'))
   }
@@ -30,23 +32,33 @@ function App() {
   return (
     <>
       {/* 所有頁面共用的導覽列 */}
-      <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
+      <Navbar
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+        language={language}
+        onToggleLanguage={() =>
+          setLanguage((current) => (current === 'zh' ? 'en' : 'zh'))
+        }
+      />
 
       {/* key 使用 pathname，讓換頁時重新觸發滑入動畫 */}
       <div className="page-slide" key={location.pathname}>
         {/* 根據網址顯示不同頁面 */}
         <Routes location={location}>
-          {/* 首頁，裡面包含 Hero 和 About */}
+          {/* 首頁：首屏互動、自我介紹摘要與聯絡資訊 */}
           <Route path="/" element={<HomePage />} />
 
           {/* 關於我頁面 */}
           <Route path="/about" element={<AboutPage />} />
 
           {/* 作品頁面 */}
-          <Route path="/work" element={<WorkPage />} />
+          <Route path="/work" element={<WorkPage language={language} />} />
 
           {/* 練習作品頁面 */}
-          <Route path="/playground" element={<PlaygroundPage />} />
+          <Route
+            path="/playground"
+            element={<PlaygroundPage language={language} />}
+          />
 
           {/* 不存在的網址回到首頁 */}
           <Route path="*" element={<HomePage />} />

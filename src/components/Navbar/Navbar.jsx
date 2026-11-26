@@ -12,10 +12,9 @@ import {
   Sun,
 } from 'lucide-react'
 
-import profile from '../../data/profile'
 import './Navbar.css'
 
-function Navbar({ theme, onToggleTheme }) {
+function Navbar({ theme, onToggleTheme, language, onToggleLanguage }) {
   // 根據目前路由加入 active class
   function getLinkClass({ isActive }) {
     return isActive ? 'navbar__link navbar__link--active' : 'navbar__link'
@@ -53,7 +52,16 @@ function Navbar({ theme, onToggleTheme }) {
 
       {/* Navbar 右側功能 */}
       <div className="navbar__actions">
-        <span className="navbar__circle">{profile.language}</span>
+        <button
+          className="navbar__circle"
+          type="button"
+          onClick={onToggleLanguage}
+          aria-label={
+            language === 'zh' ? 'Switch projects to English' : '切換專案為中文'
+          }
+        >
+          {language === 'zh' ? 'TW' : 'EN'}
+        </button>
 
         <button
           className="navbar__circle navbar__theme"
@@ -68,7 +76,10 @@ function Navbar({ theme, onToggleTheme }) {
           )}
         </button>
 
-        <a className="navbar__contact" href="/#contact">
+        <a
+          className="navbar__contact"
+          href={`${import.meta.env.BASE_URL}#contact`}
+        >
           <Heart size={14} strokeWidth={2.5} />
           CONTACT
         </a>

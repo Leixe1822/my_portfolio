@@ -72,7 +72,7 @@ body {
   min-height: 100vh;
 }
 
-/* 切換路由時的水平滑入效果，呼應影片中頁面像畫布被推進來 */
+/* 切換路由時以水平位移和透明度呈現頁面進場效果 */
 .page-slide {
   animation: page-slide-in 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }

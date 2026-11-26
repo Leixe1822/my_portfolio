@@ -4,12 +4,12 @@ import projects from '../../data/projects'
 import './Projects.css'
 
 /* 作品列表區塊，資料來源是 src/data/projects.js */
-function Projects() {
+function Projects({ language }) {
   return (
     <section id="projects" className="projects-section">
       <div className="projects-section__grid">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.id} project={project} language={language} />
         ))}
       </div>
     </section>

@@ -1,5 +1,5 @@
 # GitHub Pages 自動部署：main 分支更新時，自動 build Vite 網站並發布
-name: Deploy to GitHub Pages
+name: 部署個人作品集至 GitHub Pages
 
 on:
   push:
@@ -21,25 +21,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: 取得專案原始碼
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: 設定 Node.js 環境
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      - name: 安裝鎖定版本的套件
         run: npm ci
 
-      - name: Build
+      # 先檢查程式碼；建置完成後由 postbuild 自動產生路由備援頁。
+      - name: 檢查程式碼
+        run: npm run lint
+
+      - name: 建置正式網站
         run: npm run build
 
-      - name: Support React Router fallback
-        run: cp dist/index.html dist/404.html
-
-      - name: Upload Pages artifact
+      - name: 打包並上傳網站產物
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -52,6 +53,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 部署個人作品集至 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,5 +1,4 @@
-/* Navbar 樣式：影片風格的白色工具列與亮藍 active 資料夾 tab */
-/* Nudge 風格的設計工具列 */
+/* Navbar 樣式：白色導覽工具列、藍色選取分頁，以及語言與主題按鈕。 */
 .navbar {
   width: calc(100% - 48px);
   max-width: 1500px;
@@ -221,7 +220,7 @@
   }
 
   .navbar__circle:first-child {
-    display: none;
+    display: grid;
   }
 }
 

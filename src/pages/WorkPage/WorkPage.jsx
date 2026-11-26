@@ -2,7 +2,7 @@
 import Projects from '../../sections/Projects/Projects'
 import './WorkPage.css'
 
-function WorkPage() {
+function WorkPage({ language }) {
   return (
     <main className="work-page">
       <section className="work-page__hero">
@@ -16,7 +16,7 @@ function WorkPage() {
         </div>
       </section>
 
-      <Projects />
+      <Projects language={language} />
     </main>
   )
 }

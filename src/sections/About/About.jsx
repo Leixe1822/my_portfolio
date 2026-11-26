@@ -112,6 +112,7 @@ function About() {
             <h3>我的優勢</h3>
 
             <div className="about-section__strength-track">
+              {/* 複製一組卡片以銜接循環動畫；複本不重複提供給螢幕閱讀器。 */}
               {[...strengths, ...strengths].map(
                 ({ title, description }, index) => (
                   <article

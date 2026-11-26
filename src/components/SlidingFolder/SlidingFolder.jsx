@@ -1,14 +1,32 @@
 /* SlidingFolder 元件：用資料夾 tab 呈現可滑動切換的內容面板 */
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FolderOpen } from 'lucide-react'
 
 import homePreview from '../../assets/images/home-preview.png'
 import loanPlatformPreview from '../../assets/images/loan-platform-preview.png'
 import profileMobilePreview from '../../assets/images/profile-mobile-preview.png'
 import taishinMobilePreview from '../../assets/images/taishin-mobile-preview.png'
+import eatwhatMobilePreview from '../../assets/images/eatwhat-mobile-preview.png'
+import eatwhatHome from '../../assets/images/eatwhat-home.png'
+import eatwhatExplore from '../../assets/images/eatwhat-explore.png'
 import './SlidingFolder.css'
 
+// 陣列順序對應分頁順序；slides 只用於多圖預覽，projectUrl 決定是否顯示 GO。
 const folderItems = [
+  {
+    id: 'eatwhat',
+    label: 'EatWhat',
+    image: eatwhatHome,
+    previewUrl: 'leixe1822.github.io/EatWhat/',
+    projectUrl: 'https://leixe1822.github.io/EatWhat/',
+    slides: [
+      { image: eatwhatHome, name: { zh: '首頁', en: 'Home' } },
+      {
+        image: eatwhatExplore,
+        name: { zh: '地圖搜尋結果頁', en: 'Map search results' },
+      },
+    ],
+  },
   {
     id: 'profile',
     label: 'TAISHIN-BANK',
@@ -45,8 +63,32 @@ const folderItems = [
 ]
 
 /* 資料夾式切換元件：點擊上方 tab 時，下方內容會水平滑動 */
-function SlidingFolder() {
+function SlidingFolder({ language = 'zh' }) {
+  // 第一個分頁是 EatWhat；圖片索引獨立管理，切換分頁不會重設圖片。
   const [activeIndex, setActiveIndex] = useState(0)
+  const [slideIndex, setSlideIndex] = useState(0)
+  // 手勢起點只用於計算位移，不需要觸發重新渲染。
+  const touchStart = useRef(null)
+  const locale = language === 'en' ? 'en' : 'zh'
+  const slides = folderItems[0].slides
+
+  // 加上圖片總數再取餘數，讓上一張與下一張都能循環切換。
+  function changeSlide(step) {
+    setSlideIndex((current) => (current + step + slides.length) % slides.length)
+  }
+
+  // 只接受超過 40px 且以水平方向為主的滑動，避免捲動頁面時誤切圖片。
+  function handleTouchEnd(event) {
+    const start = touchStart.current
+    touchStart.current = null
+    if (!start) return
+    const end = event.changedTouches[0]
+    const dx = end.clientX - start.x
+    const dy = end.clientY - start.y
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      changeSlide(dx < 0 ? 1 : -1)
+    }
+  }
 
   return (
     <section className="sliding-folder" aria-label="Portfolio folder">
@@ -69,12 +111,13 @@ function SlidingFolder() {
         ))}
       </div>
 
+      {/* 非目前分頁使用 inert，避免鍵盤焦點進入畫面外的連結與按鈕。 */}
       <div className="sliding-folder__body">
         <div
           className="sliding-folder__track"
           style={{ '--active-folder': activeIndex }}
         >
-          {folderItems.map((item) => (
+          {folderItems.map((item, index) => (
             <article
               className={`sliding-folder__panel ${
                 item.image || item.variant === 'mobile'
@@ -85,6 +128,8 @@ function SlidingFolder() {
               }`}
               id={`folder-panel-${item.id}`}
               role="tabpanel"
+              inert={activeIndex !== index}
+              aria-hidden={activeIndex !== index}
               aria-labelledby={`folder-tab-${item.id}`}
               key={item.id}
             >
@@ -102,8 +147,8 @@ function SlidingFolder() {
                     </div>
                     <div className="sliding-folder__phone-screen">
                       <img
-                        src={profileMobilePreview}
-                        alt="個人作品集手機版首頁截圖"
+                        src={eatwhatMobilePreview}
+                        alt="EatWhat 手機版地圖搜尋結果截圖"
                       />
                     </div>
                   </div>
@@ -164,7 +209,37 @@ function SlidingFolder() {
                         <span />
                         <p>{item.previewUrl}</p>
                       </div>
-                      <img src={item.image} alt={item.imageAlt} />
+                      {item.slides ? (
+                        <div
+                          className="sliding-folder__carousel"
+                          onTouchStart={(event) => {
+                            const touch = event.touches[0]
+                            touchStart.current =
+                              event.touches.length === 1
+                                ? { x: touch.clientX, y: touch.clientY }
+                                : null
+                          }}
+                          onTouchEnd={handleTouchEnd}
+                          onTouchCancel={() => {
+                            touchStart.current = null
+                          }}
+                        >
+                          {item.slides.map((slide, index) => (
+                            <img
+                              key={slide.image}
+                              className={
+                                slideIndex === index ? 'is-active' : ''
+                              }
+                              src={slide.image}
+                              alt={`EatWhat — ${slide.name[locale]}`}
+                              aria-hidden={slideIndex !== index}
+                              draggable={false}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <img src={item.image} alt={item.imageAlt} />
+                      )}
 
                       {item.projectUrl && (
                         <a
@@ -172,12 +247,52 @@ function SlidingFolder() {
                           href={item.projectUrl}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label="Open Taishin Bank project"
+                          aria-label={`Open ${item.label} project`}
                         >
                           GO
                         </a>
                       )}
                     </figure>
+                    {/* 圓點可直接選圖；即時區域會朗讀目前頁碼及名稱。 */}
+                    {item.slides && (
+                      <div className="sliding-folder__carousel-controls">
+                        <button
+                          type="button"
+                          onClick={() => changeSlide(-1)}
+                          aria-label={
+                            locale === 'en' ? 'Previous image' : '上一張圖片'
+                          }
+                        >
+                          ←
+                        </button>
+                        <div className="sliding-folder__carousel-status">
+                          <div className="sliding-folder__carousel-dots">
+                            {item.slides.map((slide, index) => (
+                              <button
+                                key={slide.image}
+                                type="button"
+                                aria-label={`${index + 1}: ${slide.name[locale]}`}
+                                aria-pressed={slideIndex === index}
+                                onClick={() => setSlideIndex(index)}
+                              />
+                            ))}
+                          </div>
+                          <p aria-live="polite" aria-atomic="true">
+                            {slideIndex + 1} / {item.slides.length} ·{' '}
+                            {item.slides[slideIndex].name[locale]}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => changeSlide(1)}
+                          aria-label={
+                            locale === 'en' ? 'Next image' : '下一張圖片'
+                          }
+                        >
+                          →
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </>
               ) : (
